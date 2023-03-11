@@ -1,5 +1,5 @@
 // code here
-const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+const suit = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
 const value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 
 class Deck {
@@ -14,7 +14,12 @@ class Deck {
     //need to get a random card for each player
     shuffle() {
         for(let i = this.numberOfCards - 1; i > 0; i--) {
-            let newIndex = Math.floor(Math.random() = (i +1));
+            let newIndex = Math.floor(Math.random() = (i + 1) * this.numberOfCards);
+            //random card
+            let oldIndex = this.cards[newIndex];
+            //putting value within a special place, make note of i(so not to be randomly assigned)
+            this.cards [newIndex] = this.cards[i];
+            this.cards[i] = oldIndex;
         }
     }
 }
@@ -23,14 +28,22 @@ class Card {
     constructor(suit, value) {
     this.suit = suit;
     this.value = value;
-    return newCard = 
     }
 }
 
 class Player {
-    constructor() {
-    this.player = [player1, player2];
+    constructor(name) {
+    this.name = name;
+    this.score = 0;
+    //each player starts at 0
+    this.hand = [];
+    //hand is unknown
     }
+    //going to be used when split deck in half
+    addDeck(deck) {
+        this.hand = deck;
+    }
+    
 }
 
 
@@ -41,11 +54,12 @@ createCard() {
 }
 
 function newDeck() {
-    return suit.flatMap(suit => )
+    return suit.flatMap(suit => {
+        return value.map(value => {
+            return new Card(suit, value);
+        })
+    })
 }
 
 let newDeck = new Deck();
 newDeck.createCard();
-
-//splitting the deck to pass out to more players
-class Player
